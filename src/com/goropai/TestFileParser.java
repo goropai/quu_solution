@@ -20,8 +20,8 @@ public class TestFileParser {
 
     private String inputFilePath;
     private String outputFilePath;
-    List<Wait> waits = new ArrayList<>(MAX_LINES);
-    List<Query> queries = new ArrayList<>(MAX_LINES);
+    private List<Wait> waits = new ArrayList<>(MAX_LINES);
+    private List<Query> queries = new ArrayList<>(MAX_LINES);
 
     public TestFileParser() {
         this.inputFilePath = DEFAULT_IN_FILE_PATH;
@@ -112,7 +112,7 @@ public class TestFileParser {
         result.setResponseType(parts[3].equals(ResponseType.P.toString())?ResponseType.P:ResponseType.N);
         //4
         if (parts[4].contains("-")) {
-            String[] partsOfDate = parts[4].split("\\-");
+            String[] partsOfDate = parts[4].split("-");
             result.setDateFrom(DATE_FORMAT.parse(partsOfDate[0]));
             result.setDateTo(DATE_FORMAT.parse(partsOfDate[1]));
         } else {
